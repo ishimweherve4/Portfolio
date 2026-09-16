@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeronautical Maintenance Engineer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-navy: #0284c7;
+            --accent-hover: #0369a1;
+            --border-color: #334155;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --pill-bg: #334155;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-blue: #0284c7;
+            --accent-navy: #0369a1;
+            --accent-hover: #075985;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            --pill-bg: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .brand-logo i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr max-content;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-meta i {
+            color: var(--accent-blue);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.65rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Tabs Navigation */
+        .tabs-wrapper {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            padding: 0 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title i {
+            color: var(--accent-blue);
+        }
+
+        .tag-pill {
+            background-color: var(--pill-bg);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-list {
+            list-style: none;
+        }
+
+        .card-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 0.925rem;
+        }
+
+        .card-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Filter Controls */
+        .filter-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-navy);
+            color: white;
+            border-color: var(--accent-navy);
+        }
+
+        /* Specific Highlights */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Contact Modal */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            max-width: 500px;
+            width: 100%;
+            padding: 1.75rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.6rem;
+            border-radius: 0.4rem;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="brand-logo">
+                <i class="fa-solid fa-plane-departure"></i>
+                <span>AeroSpec Portfolio</span>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    <span id="themeLabel">Dark</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-container">
+            <div>
+                <h1 class="hero-title">Aeronautical Maintenance Engineer</h1>
+                <div class="hero-subtitle">Airframe & Powerplant Specialist</div>
+                <p class="hero-description">
+                    Experienced in commercial airframe heavy maintenance, system troubleshooting, structural repairs, and powerplant inspection protocols. Committed to regulatory compliance and flight safety standards.
+                </p>
+                <div class="hero-meta">
+                    <span><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</span>
+                    <span><i class="fa-solid fa-language"></i> Bilingual (English / French)</span>
+                    <span><i class="fa-solid fa-shield-halved"></i> EASA & FAA Standard Compliance</span>
+                </div>
+                <div class="cta-group">
+                    <button class="btn btn-primary" onclick="openContactModal()">
+                        <i class="fa-solid fa-envelope"></i> Contact Directly
+                    </button>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fa-solid fa-file-arrow-down"></i> Resume (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-wrapper">
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab(event, 'overview')">
+                <i class="fa-solid fa-chart-line"></i> Overview
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'fleet')">
+                <i class="fa-solid fa-plane"></i> Fleet Experience
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'skills')">
+                <i class="fa-solid fa-wrench"></i> Technical Competencies
+            </button>
+            <button class="tab-btn" onclick="switchTab(event, 'qualifications')">
+                <i class="fa-solid fa-graduation-cap"></i> Education & Certs
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Tab 1: Overview -->
+        <div id="overview" class="tab-panel active">
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">Heavy</div>
+                    <div class="stat-label">C-Check Maintenance Focus</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Commercial Airframe Families</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Regulatory Adherence</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Bilingual</div>
+                    <div class="stat-label">English & French Proficiency</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-screwdriver-wrench"></i> Primary Engineering Focus</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li>Execution of structural airframe maintenance & C-check inspection protocols.</li>
+                        <li>Hydraulics, flight control mechanics, and actuator alignment checks.</li>
+                        <li>Environmental Control Systems (ECS) and cabin pressurization limits troubleshooting.</li>
+                        <li>Powerplant inspection, demineralized water wash routines, and continuous-loop fire detection testing.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-clipboard-check"></i> Quality & Compliance</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li>Strict adherence to Maintenance Manuals (AMM), IPC, and Structural Repair Manuals (SRM).</li>
+                        <li>Tool control, FOD (Foreign Object Debris) prevention, and workspace safety management.</li>
+                        <li>Proper documentation of task cards, logbook entries, and defect rectifications.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Fleet Experience -->
+        <div id="fleet" class="tab-panel">
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-plane"></i> Boeing 787-8</h3>
+                        <span class="tag-pill">Widebody</span>
+                    </div>
+                    <ul class="card-list">
+                        <li>Composite & alloy airframe structural inspection assistance.</li>
+                        <li>Hydraulics and high-pressure system leak checks during heavy servicing.</li>
+                        <li>Cabin environment & pressurization sensor verification.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-plane"></i> Boeing 737-800</h3>
+                        <span class="tag-pill">Narrowbody</span>
+                    </div>
+                    <ul class="card-list">
+                        <li>Flight control rigging, torque link ground pin safety placements, and lock pin checks.</li>
+                        <li>Solid shank rivet replacements and localized corrosion treatment.</li>
+                        <li>Air cycle machine (ACM) performance monitoring and filter checks.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-plane"></i> Douglas DC-9</h3>
+                        <span class="tag-pill">Classic Airframe</span>
+                    </div>
+                    <ul class="card-list">
+                        <li>Legacy structural inspection and mechanical actuator maintenance.</li>
+                        <li>Primary/secondary flight control cable tension adjustments and lubrication.</li>
+                        <li>Component Removal & Installation (R&I) during routine base maintenance.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Technical Competencies -->
+        <div id="skills" class="tab-panel">
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterSkills('all', this)">All Skills</button>
+                <button class="filter-btn" onclick="filterSkills('airframe', this)">Airframe & Structures</button>
+                <button class="filter-btn" onclick="filterSkills('powerplant', this)">Powerplant & Systems</button>
+                <button class="filter-btn" onclick="filterSkills('avionics', this)">Avionics & Electronics</button>
+            </div>
+
+            <div class="grid-2" id="skillsGrid">
+                <div class="card skill-card" data-category="airframe">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-hammer"></i> Airframe & Structures</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li>Solid Shank Rivet installation & structural sheet metal repair.</li>
+                        <li>Corrosion inspection, treatment, and protective coating application.</li>
+                        <li>Landing gear assembly torque links, safety lock pins, and cycle tracking.</li>
+                    </ul>
+                </div>
+
+                <div class="card skill-card" data-category="powerplant">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-fan"></i> Powerplant & Environmental</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li>Turbofan engine compressor washes utilizing demineralized water.</li>
+                        <li>Kidde continuous-loop thermal fire detection loop testing & troubleshooting.</li>
+                        <li>Air Cycle Cooling Machines & cabin pressurization control loops.</li>
+                    </ul>
+                </div>
+
+                <div class="card skill-card" data-category="avionics">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-microchip"></i> Electrical & Wiring</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li>Ethernet cable crimping standards (T568A / T568B pinouts).</li>
+                        <li>High-impedance matching circuits and operational amplifier specifications.</li>
+                        <li>Component power terminals and electrical continuity testing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: Education & Qualifications -->
+        <div id="qualifications" class="tab-panel">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-user-graduate"></i> Academic Background</h3>
+                    </div>
+                    <p style="font-weight: 600; margin-bottom: 0.25rem;">Aeronautical Engineering Degree / Diploma Program</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Fully Completed Coursework & Examinations</p>
+                    <ul class="card-list">
+                        <li>Specialization in Airframe & Powerplant Systems.</li>
+                        <li>Comprehensive study of EASA/FAA regulatory frameworks.</li>
+                        <li>Formal Graduation Scheduled: December 2026.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-certificate"></i> Key Competencies & Languages</h3>
+                    </div>
+                    <ul class="card-list">
+                        <li><strong>Languages:</strong> Native/Fluent English & French.</li>
+                        <li><strong>Technical Publications:</strong> Proficient with AMM, IPC, SRM, & CMM documentation.</li>
+                        <li><strong>Workshop Safety:</strong> Human Factors, Safety Management Systems (SMS), and FOD prevention.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Aeronautical Maintenance Engineer Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div class="modal-backdrop" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-envelope"></i> Get In Touch</h3>
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" class="form-control" required placeholder="name@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" rows="4" required placeholder="Inquiry details..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Theme Toggle Functionality
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeLabel = document.getElementById('themeLabel');
+        const html = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            if (newTheme === 'light') {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeLabel.textContent = 'Light';
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeLabel.textContent = 'Dark';
+            }
+        });
+
+        // Tab Switching Logic
+        function switchTab(event, tabId) {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Filter Skills Logic
+        function filterSkills(category, btn) {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const skillCards = document.querySelectorAll('.skill-card');
+
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            skillCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Contact Modal Logic
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! Message functionality is active.');
+            closeContactModal();
+        }
+    </script>
+</body>
+</html>
