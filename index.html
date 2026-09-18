@@ -280,13 +280,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scroll-Revealed Gallery Section */
+        /* Scroll-Revealed Gallery Section Styles */
         .gallery-section-header {
-            margin: 2.5rem 0 1.5rem;
+            margin: 2.5rem 0 1.25rem;
         }
 
         .gallery-section-header h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -301,7 +301,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .reveal-card {
@@ -383,7 +383,7 @@
             margin-left: 0.5rem;
         }
 
-        /* General Grid & Card Layouts */
+        /* Layout Grids and Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -504,7 +504,7 @@
             color: var(--text-secondary);
         }
 
-        /* Full Screen Lightbox Modal */
+        /* Lightbox Modal */
         .lightbox-backdrop {
             display: none;
             position: fixed;
@@ -633,7 +633,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-header-wrapper">
@@ -683,9 +682,8 @@
         </div>
     </div>
 
-    <!-- Main Content Area -->
     <main>
-        <!-- Tab 1: Overview -->
+        <!-- TAB 1: OVERVIEW -->
         <div id="overview" class="tab-panel active">
             <div class="stat-grid">
                 <div class="stat-card">
@@ -731,18 +729,18 @@
                 </div>
             </div>
 
-            <!-- Scroll-Revealed Visual Cards Gallery (7 Photos) -->
+            <!-- Featured Highlights Photos for Overview (2 Cards) -->
             <div class="gallery-section-header">
-                <h3><i class="fa-solid fa-camera-retro"></i> Operational Visual Documentation</h3>
+                <h3><i class="fa-solid fa-star"></i> Featured Operational Highlights</h3>
             </div>
 
             <div class="scroll-reveal-grid">
-                <!-- Card 1 -->
+                <!-- Gallery Card 1 -->
                 <div class="reveal-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-Check Airframe Servicing')">
                     <div class="card-img-wrapper">
                         <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
                         <div class="card-overlay">
-                            <span class="card-tag">Airframe Structural</span>
+                            <span class="card-tag">Featured Overview</span>
                             <div class="card-caption">
                                 <span>Boeing 787-8 Heavy Inspection</span>
                                 <i class="fa-solid fa-expand"></i>
@@ -751,84 +749,14 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Gallery Card 2 -->
                 <div class="reveal-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
                     <div class="card-img-wrapper">
                         <img src="gallery2.jpg" alt="Engine Wash Inspection">
                         <div class="card-overlay">
-                            <span class="card-tag">Powerplant Servicing</span>
+                            <span class="card-tag">Featured Overview</span>
                             <div class="card-caption">
                                 <span>Turbofan Compressor Wash</span>
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="reveal-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
-                    <div class="card-img-wrapper">
-                        <img src="gallery3.jpg" alt="Flight Control Rigging">
-                        <div class="card-overlay">
-                            <span class="card-tag">Hydraulic Systems</span>
-                            <div class="card-caption">
-                                <span>Flight Control Cable Rigging</span>
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="reveal-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Safety Pin Placement & Brake Checks')">
-                    <div class="card-img-wrapper">
-                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
-                        <div class="card-overlay">
-                            <span class="card-tag">Landing Gear</span>
-                            <div class="card-caption">
-                                <span>Safety Pin & Torque Link Check</span>
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="reveal-card" onclick="zoomImage('gallery5.jpg', 'Airframe Structural Fastener & Sheet Metal Inspection')">
-                    <div class="card-img-wrapper">
-                        <img src="gallery5.jpg" alt="Structural Rivet Inspection">
-                        <div class="card-overlay">
-                            <span class="card-tag">Sheet Metal Repair</span>
-                            <div class="card-caption">
-                                <span>Rivet & Fastener Verification</span>
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="reveal-card" onclick="zoomImage('gallery6.jpg', 'Avionics Bay & Cable Harness Servicing')">
-                    <div class="card-img-wrapper">
-                        <img src="gallery6.jpg" alt="Avionics Wiring Check">
-                        <div class="card-overlay">
-                            <span class="card-tag">Avionics & Wiring</span>
-                            <div class="card-caption">
-                                <span>Harness & Pinout Routing</span>
-                                <i class="fa-solid fa-expand"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="reveal-card" onclick="zoomImage('gallery7.jpg', 'Environmental Control System & ACM Testing')">
-                    <div class="card-img-wrapper">
-                        <img src="gallery7.jpg" alt="Environmental Control System">
-                        <div class="card-overlay">
-                            <span class="card-tag">Environmental Control</span>
-                            <div class="card-caption">
-                                <span>ECS & ACM Pack Inspection</span>
                                 <i class="fa-solid fa-expand"></i>
                             </div>
                         </div>
@@ -837,7 +765,7 @@
             </div>
         </div>
 
-        <!-- Tab 2: Fleet Experience -->
+        <!-- TAB 2: FLEET EXPERIENCE -->
         <div id="fleet" class="tab-panel">
             <div class="grid-3">
                 <div class="card">
@@ -900,9 +828,58 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Fleet Experience Photos (gallery1, gallery3, gallery4) -->
+            <div class="gallery-section-header">
+                <h3><i class="fa-solid fa-plane-up"></i> Fleet & Aircraft Servicing Visuals</h3>
+            </div>
+
+            <div class="scroll-reveal-grid">
+                <!-- Fleet Card 1 -->
+                <div class="reveal-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Airframe Structural Maintenance')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery1.jpg" alt="Boeing 787-8 Airframe">
+                        <div class="card-overlay">
+                            <span class="card-tag">Widebody Fleet</span>
+                            <div class="card-caption">
+                                <span>Boeing 787-8 Airframe Check</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 2 -->
+                <div class="reveal-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Cable Rigging')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery3.jpg" alt="Flight Control Surfaces">
+                        <div class="card-overlay">
+                            <span class="card-tag">Control Assemblies</span>
+                            <div class="card-caption">
+                                <span>Flight Control Cable Rigging</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 3 -->
+                <div class="reveal-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Safety Pins & Torque Links')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                        <div class="card-overlay">
+                            <span class="card-tag">Landing Gear</span>
+                            <div class="card-caption">
+                                <span>Gear Pins & Torque Link Alignment</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Tab 3: Technical Competencies -->
+        <!-- TAB 3: TECHNICAL COMPETENCIES -->
         <div id="skills" class="tab-panel">
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterSkills('all', this)">All Skills</button>
@@ -945,9 +922,72 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Hands-On Technical Work Photos (gallery2, gallery5, gallery6, gallery7) -->
+            <div class="gallery-section-header">
+                <h3><i class="fa-solid fa-gears"></i> Hands-On Technical Execution</h3>
+            </div>
+
+            <div class="scroll-reveal-grid">
+                <!-- Hands-On Card 1 -->
+                <div class="reveal-card" onclick="zoomImage('gallery5.jpg', 'Airframe Fastener & Sheet Metal Repair Verification')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery5.jpg" alt="Sheet Metal Riveting">
+                        <div class="card-overlay">
+                            <span class="card-tag">Sheet Metal & Riveting</span>
+                            <div class="card-caption">
+                                <span>Fastener & Rivet Inspection</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 2 -->
+                <div class="reveal-card" onclick="zoomImage('gallery6.jpg', 'Avionics Bay Cable Harness Pinout Verification')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery6.jpg" alt="Avionics Harness Wiring">
+                        <div class="card-overlay">
+                            <span class="card-tag">Avionics & Harness</span>
+                            <div class="card-caption">
+                                <span>Wiring Harness Routing & Pinouts</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 3 -->
+                <div class="reveal-card" onclick="zoomImage('gallery7.jpg', 'Environmental Control System & ACM Pack Operational Test')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery7.jpg" alt="ECS & ACM Pack Testing">
+                        <div class="card-overlay">
+                            <span class="card-tag">Environmental Systems</span>
+                            <div class="card-caption">
+                                <span>ECS & ACM Pack Operational Testing</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 4 -->
+                <div class="reveal-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Compressor De-mineralized Water Wash')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery2.jpg" alt="Turbofan Engine Wash">
+                        <div class="card-overlay">
+                            <span class="card-tag">Powerplant Servicing</span>
+                            <div class="card-caption">
+                                <span>Engine Compressor Wash</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Tab 4: Education & Qualifications -->
+        <!-- TAB 4: EDUCATION & CERTIFICATIONS -->
         <div id="qualifications" class="tab-panel">
             <div class="grid-2">
                 <div class="card">
@@ -1011,37 +1051,42 @@
         <p>© 2026 All rights reserved.</p>
     </footer>
 
-    <!-- Interactive JavaScript -->
     <script>
-        // IntersectionObserver for Scroll-Revealed Cards
+        // IntersectionObserver for Scroll-Revealed Cards across all tabs
         const observerOptions = {
             root: null,
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
         };
 
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
+        let revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Stagger reveal animations slightly based on index
-                    setTimeout(() => {
-                        entry.target.classList.add('is-visible');
-                    }, (index % 4) * 110);
+                    entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         function initScrollReveal() {
-            document.querySelectorAll('.reveal-card').forEach(card => {
-                revealObserver.observe(card);
-            });
+            // Find all reveal-cards within the currently active panel
+            const activePanel = document.querySelector('.tab-panel.active');
+            if (activePanel) {
+                const cards = activePanel.querySelectorAll('.reveal-card');
+                cards.forEach((card, idx) => {
+                    // Reset card state if re-navigating
+                    card.classList.remove('is-visible');
+                    setTimeout(() => {
+                        revealObserver.observe(card);
+                    }, idx * 100);
+                });
+            }
         }
 
         // Initialize Observer on DOM Load
         document.addEventListener('DOMContentLoaded', initScrollReveal);
 
-        // Theme Switcher
+        // Theme Switcher Logic
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeLabel = document.getElementById('themeLabel');
@@ -1061,7 +1106,7 @@
             }
         });
 
-        // Tab Switching
+        // Tab Switching & Re-triggering Scroll Reveal
         function switchTab(event, tabId) {
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabPanels = document.querySelectorAll('.tab-panel');
@@ -1072,10 +1117,8 @@
             event.currentTarget.classList.add('active');
             document.getElementById(tabId).classList.add('active');
 
-            // Trigger scroll reveal observer if switching back to overview
-            if (tabId === 'overview') {
-                setTimeout(initScrollReveal, 50);
-            }
+            // Re-trigger reveal animation for cards in the newly opened tab
+            setTimeout(initScrollReveal, 60);
         }
 
         // Skill Filter
@@ -1095,7 +1138,7 @@
             });
         }
 
-        // Lightbox Zoom Modal
+        // Lightbox Zoom Modal Logic
         function zoomImage(src, caption) {
             document.getElementById('lightboxImg').src = src;
             document.getElementById('lightboxCap').textContent = caption;
