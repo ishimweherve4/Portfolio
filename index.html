@@ -215,7 +215,7 @@
             color: var(--accent-blue);
         }
 
-        /* Floating Horizontal Carousel (No Header / Controls) */
+        /* Seamless Floating Horizontal Carousel */
         .marquee-container {
             margin-top: 1rem;
         }
@@ -233,7 +233,7 @@
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: marqueeSlide 30s linear infinite;
+            animation: marqueeSlide 40s linear infinite;
         }
 
         .marquee-wrapper:hover .marquee-track {
@@ -653,11 +653,11 @@
                 </a>
             </div>
 
-            <!-- Seamless Floating Horizontal Carousel -->
+            <!-- Seamless Floating Horizontal Carousel with 7 Photos -->
             <div class="marquee-container">
                 <div class="marquee-wrapper">
                     <div class="marquee-track">
-                        <!-- Set 1 -->
+                        <!-- Set 1: Photos gallery1.jpg to gallery7.jpg -->
                         <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
                             <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
                             <div class="floating-caption">
@@ -683,11 +683,32 @@
                             <img src="gallery4.jpg" alt="Landing Gear Maintenance">
                             <div class="floating-caption">
                                 <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery5.jpg', 'Airframe Structural Fastener & Sheet Metal Inspection')">
+                            <img src="gallery5.jpg" alt="Structural Rivet Inspection">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-hammer"></i> Sheet Metal</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery6.jpg', 'Avionics Bay & Cable Harness Servicing')">
+                            <img src="gallery6.jpg" alt="Avionics Wiring Check">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-microchip"></i> Wiring Harness</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery7.jpg', 'Environmental Control System & ACM Testing')">
+                            <img src="gallery7.jpg" alt="Environmental Control System">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-wind"></i> ECS & ACM</span>
                                 <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
                             </div>
                         </div>
 
-                        <!-- Duplicated Set for Seamless Loop -->
+                        <!-- Duplicated Set (1 to 7) for Continuous Loop -->
                         <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
                             <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
                             <div class="floating-caption">
@@ -713,6 +734,27 @@
                             <img src="gallery4.jpg" alt="Landing Gear Maintenance">
                             <div class="floating-caption">
                                 <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery5.jpg', 'Airframe Structural Fastener & Sheet Metal Inspection')">
+                            <img src="gallery5.jpg" alt="Structural Rivet Inspection">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-hammer"></i> Sheet Metal</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery6.jpg', 'Avionics Bay & Cable Harness Servicing')">
+                            <img src="gallery6.jpg" alt="Avionics Wiring Check">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-microchip"></i> Wiring Harness</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
+                        </div>
+                        <div class="floating-card" onclick="zoomImage('gallery7.jpg', 'Environmental Control System & ACM Testing')">
+                            <img src="gallery7.jpg" alt="Environmental Control System">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-wind"></i> ECS & ACM</span>
                                 <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
                             </div>
                         </div>
