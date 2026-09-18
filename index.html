@@ -107,7 +107,7 @@
             color: var(--accent-blue);
         }
 
-        /* Hero Banner */
+        /* Hero Section */
         .hero {
             background-color: var(--bg-secondary);
             padding: 3rem 2rem 2.5rem;
@@ -117,16 +117,6 @@
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
         }
 
         .hero-header-wrapper {
@@ -163,6 +153,7 @@
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
+            max-width: 800px;
         }
 
         .hero-meta {
@@ -188,6 +179,7 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
         .btn {
@@ -223,90 +215,93 @@
             color: var(--accent-blue);
         }
 
-        /* Auto-Play Carousel Styling */
-        .carousel-card {
+        /* Continuous Floating Carousel (9:16 Portrait Cards) */
+        .marquee-wrapper {
             position: relative;
-            border-radius: 0.75rem;
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+            /* Soft fade edges on left and right */
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: marqueeSlide 35s linear infinite;
+        }
+
+        .marquee-wrapper:hover .marquee-track {
+            animation-play-state: paused; /* Pause on hover */
+        }
+
+        @keyframes marqueeSlide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%); /* Smooth infinitely looping loop */
+            }
+        }
+
+        /* 9:16 Portrait Frame Cards */
+        .floating-card {
+            position: relative;
+            width: 190px;
+            height: 338px; /* 9:16 aspect ratio */
+            border-radius: 0.85rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
-            background: #000;
-            height: 320px;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            background-color: var(--bg-card);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
             cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .carousel-slide.active {
-            opacity: 1;
-            z-index: 1;
+        .floating-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent-blue);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
         }
 
-        .carousel-slide img {
+        .floating-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .carousel-caption {
+        .floating-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1.25rem 1rem 0.75rem;
-            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            padding: 1.5rem 0.75rem 0.75rem;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.95), transparent);
             color: #ffffff;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: space-between;
+            line-height: 1.25;
         }
 
-        .carousel-caption span i {
+        .floating-caption span i {
             color: var(--accent-blue);
-            margin-right: 0.4rem;
+            margin-right: 0.3rem;
         }
 
-        .zoom-hint {
+        .zoom-icon {
             font-size: 0.75rem;
-            color: #94a3b8;
-            opacity: 0.8;
+            color: var(--accent-blue);
+            opacity: 0.85;
         }
 
-        .carousel-dots {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: var(--accent-blue);
-            transform: scale(1.3);
-        }
-
-        /* Tabs Navigation */
+        /* Navigation Tabs */
         .tabs-wrapper {
             background-color: var(--bg-secondary);
             border-bottom: 1px solid var(--border-color);
@@ -368,7 +363,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards Grid Layout */
+        /* Cards Layout */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -462,7 +457,7 @@
             border-color: var(--accent-navy);
         }
 
-        /* Specific Highlights */
+        /* Highlight Stats */
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -489,7 +484,7 @@
             color: var(--text-secondary);
         }
 
-        /* Lightbox Image Modal */
+        /* Full Screen Lightbox Modal */
         .lightbox-backdrop {
             display: none;
             position: fixed;
@@ -497,7 +492,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 300;
             justify-content: center;
             align-items: center;
@@ -513,17 +508,19 @@
             max-height: 85vh;
             border-radius: 0.5rem;
             object-fit: contain;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
         }
 
         .lightbox-caption {
             position: absolute;
             bottom: 2rem;
             color: #ffffff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-align: center;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             padding: 0.5rem 1.5rem;
             border-radius: 2rem;
+            border: 1px solid var(--border-color);
         }
 
         /* Footer */
@@ -616,74 +613,100 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div>
-                <!-- Profile Header -->
-                <div class="hero-header-wrapper">
-                    <img src="profile.jpg" alt="Herve Ishimwe Profile Picture" class="profile-img">
-                    <div>
-                        <h1 class="hero-title">HERVE ISHIMWE</h1>
-                        <div class="hero-subtitle">Aircraft Maintenance Technician</div>
-                    </div>
-                </div>
-
-                <p class="hero-description">
-                    Aircraft Maintenance Technician widely experienced in airframe inspections, heavy C-checks, systems troubleshooting, and engine servicing across commercial widebody, narrowbody, and regional fleets.
-                </p>
-                <div class="hero-meta">
-                    <span><i class="fa-solid fa-envelope"></i> ishimweherve4@gmail.com</span>
-                    <span><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</span>
-                    <span><i class="fa-solid fa-language"></i> Multilingual (English / Swahili / French)</span>
-                </div>
-                <div class="cta-group">
-                    <button class="btn btn-primary" onclick="openContactModal()">
-                        <i class="fa-solid fa-envelope"></i> Contact Directly
-                    </button>
-                    <a href="https://www.linkedin.com/in/ishimweherve4/" target="_blank" class="btn btn-secondary">
-                        <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
-                    </a>
+            <!-- Profile Info -->
+            <div class="hero-header-wrapper">
+                <img src="profile.jpg" alt="Herve Ishimwe Profile Picture" class="profile-img">
+                <div>
+                    <h1 class="hero-title">HERVE ISHIMWE</h1>
+                    <div class="hero-subtitle">Aircraft Maintenance Technician</div>
                 </div>
             </div>
 
-            <!-- Auto-Play Image Carousel -->
-            <div class="carousel-card" id="autoCarousel">
-                <div class="carousel-slide active" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
-                    <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
-                    <div class="carousel-caption">
-                        <span><i class="fa-solid fa-plane"></i> Boeing 787-8 Airframe Servicing</span>
-                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
-                    </div>
-                </div>
-                <div class="carousel-slide" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
-                    <img src="gallery2.jpg" alt="Engine Wash Inspection">
-                    <div class="carousel-caption">
-                        <span><i class="fa-solid fa-gears"></i> Engine Compressor Maintenance</span>
-                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
-                    </div>
-                </div>
-                <div class="carousel-slide" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
-                    <img src="gallery3.jpg" alt="Flight Control Rigging">
-                    <div class="carousel-caption">
-                        <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Control Rigging</span>
-                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
-                    </div>
-                </div>
-                <div class="carousel-slide" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
-                    <img src="gallery4.jpg" alt="Landing Gear Maintenance">
-                    <div class="carousel-caption">
-                        <span><i class="fa-solid fa-shield-halved"></i> Landing Gear Safety Pin Procedures</span>
-                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
-                    </div>
-                </div>
+            <p class="hero-description">
+                Aircraft Maintenance Technician widely experienced in airframe inspections, heavy C-checks, systems troubleshooting, and engine servicing across commercial widebody, narrowbody, and regional fleets.
+            </p>
 
-                <!-- Subtle Indicator Dots -->
-                <div class="carousel-dots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+            <div class="hero-meta">
+                <span><i class="fa-solid fa-envelope"></i> ishimweherve4@gmail.com</span>
+                <span><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</span>
+                <span><i class="fa-solid fa-language"></i> Multilingual (English / Swahili / French)</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="cta-group">
+                <button class="btn btn-primary" onclick="openContactModal()">
+                    <i class="fa-solid fa-envelope"></i> Contact Directly
+                </button>
+                <a href="https://www.linkedin.com/in/ishimweherve4/" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+
+            <!-- Continuous Floating Image Carousel (9:16 Portrait Cards) -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    <!-- Set 1 -->
+                    <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
+                        <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
+                        <img src="gallery2.jpg" alt="Engine Wash Inspection">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
+                        <img src="gallery3.jpg" alt="Flight Control Rigging">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
+                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Duplicated Set for Seamless Infinite Loop -->
+                    <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
+                        <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
+                        <img src="gallery2.jpg" alt="Engine Wash Inspection">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
+                        <img src="gallery3.jpg" alt="Flight Control Rigging">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
+                    <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
+                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                        <div class="floating-caption">
+                            <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -980,69 +1003,6 @@
                 }
             });
         }
-
-        // Auto-Play Carousel Logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
-        let slideInterval;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                dots[i].classList.remove('active');
-            });
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        function startAutoPlay() {
-            slideInterval = setInterval(nextSlide, 4000); // Transitions every 4 seconds
-        }
-
-        function stopAutoPlay() {
-            clearInterval(slideInterval);
-        }
-
-        // Pause on Hover
-        const carouselCard = document.getElementById('autoCarousel');
-        carouselCard.addEventListener('mouseenter', stopAutoPlay);
-        carouselCard.addEventListener('mouseleave', startAutoPlay);
-
-        // Touch Swipe Gesture Support (Mobile)
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        carouselCard.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
-        carouselCard.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 40) {
-                nextSlide();
-            }
-            if (touchEndX > touchStartX + 40) {
-                prevSlide();
-            }
-        }
-
-        startAutoPlay();
 
         // Lightbox Zoom Modal
         function zoomImage(src, caption) {
