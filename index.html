@@ -215,26 +215,29 @@
             color: var(--accent-blue);
         }
 
-        /* Continuous Floating Carousel (9:16 Portrait Cards) */
+        /* Floating Horizontal Carousel (No Header / Controls) */
+        .marquee-container {
+            margin-top: 1rem;
+        }
+
         .marquee-wrapper {
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 1rem 0;
-            /* Soft fade edges on left and right */
-            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
         }
 
         .marquee-track {
             display: flex;
             gap: 1.5rem;
             width: max-content;
-            animation: marqueeSlide 35s linear infinite;
+            animation: marqueeSlide 30s linear infinite;
         }
 
         .marquee-wrapper:hover .marquee-track {
-            animation-play-state: paused; /* Pause on hover */
+            animation-play-state: paused; /* Hover pause */
         }
 
         @keyframes marqueeSlide {
@@ -242,29 +245,34 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%); /* Smooth infinitely looping loop */
+                transform: translateX(-50%);
             }
         }
 
-        /* 9:16 Portrait Frame Cards */
+        /* 9:16 Floating Cards with Hover Glow */
         .floating-card {
             position: relative;
-            width: 190px;
-            height: 338px; /* 9:16 aspect ratio */
+            width: 185px;
+            height: 328px; /* 9:16 aspect ratio */
             border-radius: 0.85rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
             background-color: var(--bg-card);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             flex-shrink: 0;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.35s ease, 
+                        box-shadow 0.35s ease;
         }
 
+        /* Hover Stop & Glow Effect */
         .floating-card:hover {
-            transform: translateY(-6px) scale(1.02);
+            transform: translateY(-8px) scale(1.03);
             border-color: var(--accent-blue);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 
+                        0 12px 24px rgba(0, 0, 0, 0.4);
+            z-index: 10;
         }
 
         .floating-card img {
@@ -645,66 +653,68 @@
                 </a>
             </div>
 
-            <!-- Continuous Floating Image Carousel (9:16 Portrait Cards) -->
-            <div class="marquee-wrapper">
-                <div class="marquee-track">
-                    <!-- Set 1 -->
-                    <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
-                        <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+            <!-- Seamless Floating Horizontal Carousel -->
+            <div class="marquee-container">
+                <div class="marquee-wrapper">
+                    <div class="marquee-track">
+                        <!-- Set 1 -->
+                        <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
+                            <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
-                        <img src="gallery2.jpg" alt="Engine Wash Inspection">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
+                            <img src="gallery2.jpg" alt="Engine Wash Inspection">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
-                        <img src="gallery3.jpg" alt="Flight Control Rigging">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
+                            <img src="gallery3.jpg" alt="Flight Control Rigging">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
-                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
+                            <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Duplicated Set for Seamless Infinite Loop -->
-                    <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
-                        <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <!-- Duplicated Set for Seamless Loop -->
+                        <div class="floating-card" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
+                            <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-plane"></i> B787-8 Airframe</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
-                        <img src="gallery2.jpg" alt="Engine Wash Inspection">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
+                            <img src="gallery2.jpg" alt="Engine Wash Inspection">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-gears"></i> Engine Wash</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
-                        <img src="gallery3.jpg" alt="Flight Control Rigging">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
+                            <img src="gallery3.jpg" alt="Flight Control Rigging">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Controls</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
-                        <img src="gallery4.jpg" alt="Landing Gear Maintenance">
-                        <div class="floating-caption">
-                            <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
-                            <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                        <div class="floating-card" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
+                            <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                            <div class="floating-caption">
+                                <span><i class="fa-solid fa-shield-halved"></i> Gear Pins</span>
+                                <i class="fa-solid fa-magnifying-glass-plus zoom-icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
