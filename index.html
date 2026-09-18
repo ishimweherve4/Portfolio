@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herve Ishimwe</title>
+    <title>Herve Ishimwe - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -110,7 +110,7 @@
         /* Hero Banner */
         .hero {
             background-color: var(--bg-secondary);
-            padding: 3rem 2rem 2rem;
+            padding: 3rem 2rem 2.5rem;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -118,12 +118,17 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
             align-items: center;
         }
 
-        /* Profile Header Wrapper to place picture next to name */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .hero-header-wrapper {
             display: flex;
             align-items: center;
@@ -132,8 +137,8 @@
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
@@ -142,37 +147,22 @@
         }
 
         .hero-title {
-            font-size: 2.25rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 0.2rem;
             line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--accent-blue);
             font-weight: 600;
         }
 
-        @media (max-width: 600px) {
-            .hero-header-wrapper {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                gap: 1rem;
-            }
-            .hero-meta {
-                justify-content: center;
-            }
-            .cta-group {
-                justify-content: center;
-            }
-        }
-
         .hero-description {
             color: var(--text-secondary);
-            max-width: 700px;
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .hero-meta {
@@ -180,7 +170,7 @@
             flex-wrap: wrap;
             gap: 1.25rem;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
         }
 
@@ -231,6 +221,89 @@
         .btn-secondary:hover {
             border-color: var(--accent-blue);
             color: var(--accent-blue);
+        }
+
+        /* Auto-Play Carousel Styling */
+        .carousel-card {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            background: #000;
+            height: 320px;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            cursor: pointer;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.25rem 1rem 0.75rem;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .carousel-caption span i {
+            color: var(--accent-blue);
+            margin-right: 0.4rem;
+        }
+
+        .zoom-hint {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            opacity: 0.8;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--accent-blue);
+            transform: scale(1.3);
         }
 
         /* Tabs Navigation */
@@ -416,6 +489,43 @@
             color: var(--text-secondary);
         }
 
+        /* Lightbox Image Modal */
+        .lightbox-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .lightbox-backdrop.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 0.5rem;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2rem;
+            color: #ffffff;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--bg-secondary);
@@ -510,10 +620,10 @@
     <section class="hero">
         <div class="hero-container">
             <div>
-                <!-- Profile Image & Name/Title Container -->
+                <!-- Profile Header -->
                 <div class="hero-header-wrapper">
                     <img src="profile.jpg" alt="Herve Ishimwe Profile Picture" class="profile-img">
-                    <div class="hero-text-block">
+                    <div>
                         <h1 class="hero-title">HERVE ISHIMWE</h1>
                         <div class="hero-subtitle">Aircraft Maintenance Technician</div>
                     </div>
@@ -534,6 +644,46 @@
                     <a href="https://www.linkedin.com/in/ishimweherve4/" target="_blank" class="btn btn-secondary">
                         <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
                     </a>
+                </div>
+            </div>
+
+            <!-- Auto-Play Image Carousel -->
+            <div class="carousel-card" id="autoCarousel">
+                <div class="carousel-slide active" onclick="zoomImage('gallery1.jpg', 'Boeing 787-8 Heavy C-check Airframe Servicing')">
+                    <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                    <div class="carousel-caption">
+                        <span><i class="fa-solid fa-plane"></i> Boeing 787-8 Airframe Servicing</span>
+                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
+                    </div>
+                </div>
+                <div class="carousel-slide" onclick="zoomImage('gallery2.jpg', 'Turbofan Engine Wash & Compressor Inspection')">
+                    <img src="gallery2.jpg" alt="Engine Wash Inspection">
+                    <div class="carousel-caption">
+                        <span><i class="fa-solid fa-gears"></i> Engine Compressor Maintenance</span>
+                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
+                    </div>
+                </div>
+                <div class="carousel-slide" onclick="zoomImage('gallery3.jpg', 'Flight Control Surface & Hydraulic Line Rigging')">
+                    <img src="gallery3.jpg" alt="Flight Control Rigging">
+                    <div class="carousel-caption">
+                        <span><i class="fa-solid fa-screwdriver-wrench"></i> Flight Control Rigging</span>
+                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
+                    </div>
+                </div>
+                <div class="carousel-slide" onclick="zoomImage('gallery4.jpg', 'Landing Gear Assembly Pin Placement & Brake Checks')">
+                    <img src="gallery4.jpg" alt="Landing Gear Maintenance">
+                    <div class="carousel-caption">
+                        <span><i class="fa-solid fa-shield-halved"></i> Landing Gear Safety Pin Procedures</span>
+                        <span class="zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom</span>
+                    </div>
+                </div>
+
+                <!-- Subtle Indicator Dots -->
+                <div class="carousel-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
                 </div>
             </div>
         </div>
@@ -575,8 +725,8 @@
                     <div class="stat-label">Regulatory Compliance</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">Multilingual</div>
-                    <div class="stat-label">English, Swahili & French Proficiency</div>
+                    <div class="stat-number">Bilingual</div>
+                    <div class="stat-label">English & French Proficiency</div>
                 </div>
             </div>
 
@@ -746,10 +896,11 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 All rights reserved.</p>
-    </footer>
+    <!-- Full Screen Lightbox Modal -->
+    <div class="lightbox-backdrop" id="lightbox" onclick="closeZoom()">
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed view">
+        <div class="lightbox-caption" id="lightboxCap"></div>
+    </div>
 
     <!-- Contact Modal -->
     <div class="modal-backdrop" id="contactModal">
@@ -774,8 +925,14 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 All rights reserved.</p>
+    </footer>
+
     <!-- Interactive JavaScript -->
     <script>
+        // Theme Switcher
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeLabel = document.getElementById('themeLabel');
@@ -795,6 +952,7 @@
             }
         });
 
+        // Tab Switching
         function switchTab(event, tabId) {
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabPanels = document.querySelectorAll('.tab-panel');
@@ -806,6 +964,7 @@
             document.getElementById(tabId).classList.add('active');
         }
 
+        // Skill Filter
         function filterSkills(category, btn) {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const skillCards = document.querySelectorAll('.skill-card');
@@ -822,6 +981,81 @@
             });
         }
 
+        // Auto-Play Carousel Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function startAutoPlay() {
+            slideInterval = setInterval(nextSlide, 4000); // Transitions every 4 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(slideInterval);
+        }
+
+        // Pause on Hover
+        const carouselCard = document.getElementById('autoCarousel');
+        carouselCard.addEventListener('mouseenter', stopAutoPlay);
+        carouselCard.addEventListener('mouseleave', startAutoPlay);
+
+        // Touch Swipe Gesture Support (Mobile)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carouselCard.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        carouselCard.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 40) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 40) {
+                prevSlide();
+            }
+        }
+
+        startAutoPlay();
+
+        // Lightbox Zoom Modal
+        function zoomImage(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCap').textContent = caption;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeZoom() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Contact Modal Logic
         function openContactModal() {
             document.getElementById('contactModal').classList.add('active');
         }
@@ -844,9 +1078,7 @@
                 const response = await fetch(form.action, {
                     method: form.method,
                     body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
@@ -854,12 +1086,7 @@
                     form.reset();
                     closeContactModal();
                 } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        alert('Oops! There was a problem submitting your form.');
-                    }
+                    alert('Oops! There was a problem submitting your form.');
                 }
             } catch (error) {
                 alert('Network error. Please check your internet connection and try again.');
