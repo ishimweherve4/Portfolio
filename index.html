@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herve Ishimwe</title>
+    <title>Herve Ishimwe - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -49,6 +49,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
 
         /* Header & Navigation */
@@ -107,23 +108,18 @@
             color: var(--accent-blue);
         }
 
-        /* Hero Banner */
+        /* Hero Section */
         .hero {
             background-color: var(--bg-secondary);
-            padding: 3rem 2rem 2rem;
+            padding: 3rem 2rem 2.5rem;
             border-bottom: 1px solid var(--border-color);
         }
 
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
         }
 
-        /* Profile Header Wrapper to place picture next to name */
         .hero-header-wrapper {
             display: flex;
             align-items: center;
@@ -132,8 +128,8 @@
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-blue);
@@ -142,37 +138,23 @@
         }
 
         .hero-title {
-            font-size: 2.25rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 0.2rem;
             line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--accent-blue);
             font-weight: 600;
         }
 
-        @media (max-width: 600px) {
-            .hero-header-wrapper {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                gap: 1rem;
-            }
-            .hero-meta {
-                justify-content: center;
-            }
-            .cta-group {
-                justify-content: center;
-            }
-        }
-
         .hero-description {
             color: var(--text-secondary);
-            max-width: 700px;
             margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            max-width: 800px;
         }
 
         .hero-meta {
@@ -180,7 +162,7 @@
             flex-wrap: wrap;
             gap: 1.25rem;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
         }
 
@@ -233,10 +215,13 @@
             color: var(--accent-blue);
         }
 
-        /* Tabs Navigation */
+        /* Navigation Tabs */
         .tabs-wrapper {
             background-color: var(--bg-secondary);
             border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 61px;
+            z-index: 90;
         }
 
         .tabs-container {
@@ -295,7 +280,110 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Cards Grid Layout */
+        /* Scroll-Revealed Gallery Section Styles */
+        .gallery-section-header {
+            margin: 2.5rem 0 1.25rem;
+        }
+
+        .gallery-section-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gallery-section-header h3 i {
+            color: var(--accent-blue);
+        }
+
+        .scroll-reveal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .reveal-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s ease,
+                        box-shadow 0.35s ease;
+        }
+
+        .reveal-card.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.35), 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .reveal-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
+        }
+
+        .card-tag {
+            color: var(--accent-blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-caption {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            line-height: 1.3;
+        }
+
+        .card-caption i {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Layout Grids and Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -389,7 +477,7 @@
             border-color: var(--accent-navy);
         }
 
-        /* Specific Highlights */
+        /* Highlight Stats */
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -414,6 +502,45 @@
         .stat-label {
             font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+
+        /* Lightbox Modal */
+        .lightbox-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .lightbox-backdrop.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 0.5rem;
+            object-fit: contain;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2rem;
+            color: #ffffff;
+            font-size: 0.95rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            border: 1px solid var(--border-color);
         }
 
         /* Footer */
@@ -506,35 +633,33 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
     <section class="hero">
         <div class="hero-container">
-            <div>
-                <!-- Profile Image & Name/Title Container -->
-                <div class="hero-header-wrapper">
-                    <img src="profile.jpg" alt="Herve Ishimwe Profile Picture" class="profile-img">
-                    <div class="hero-text-block">
-                        <h1 class="hero-title">HERVE ISHIMWE</h1>
-                        <div class="hero-subtitle">Aircraft Maintenance Technician</div>
-                    </div>
+            <div class="hero-header-wrapper">
+                <img src="profile.jpg" alt="Herve Ishimwe Profile Picture" class="profile-img">
+                <div>
+                    <h1 class="hero-title">HERVE ISHIMWE</h1>
+                    <div class="hero-subtitle">Aircraft Maintenance Technician</div>
                 </div>
+            </div>
 
-                <p class="hero-description">
-                    Aircraft Maintenance Technician widely experienced in airframe inspections, heavy C-checks, systems troubleshooting, and engine servicing across commercial widebody, narrowbody, and regional fleets.
-                </p>
-                <div class="hero-meta">
-                    <span><i class="fa-solid fa-envelope"></i> ishimweherve4@gmail.com</span>
-                    <span><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</span>
-                    <span><i class="fa-solid fa-language"></i> Multilingual (English / Swahili / French)</span>
-                </div>
-                <div class="cta-group">
-                    <button class="btn btn-primary" onclick="openContactModal()">
-                        <i class="fa-solid fa-envelope"></i> Contact Directly
-                    </button>
-                    <a href="https://www.linkedin.com/in/ishimweherve4/" target="_blank" class="btn btn-secondary">
-                        <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
-                    </a>
-                </div>
+            <p class="hero-description">
+                Aircraft Maintenance Technician experienced in airframe inspections, heavy C-checks, systems troubleshooting, and engine servicing across commercial widebody, narrowbody, and regional fleets.
+            </p>
+
+            <div class="hero-meta">
+                <span><i class="fa-solid fa-envelope"></i> ishimweherve4@gmail.com</span>
+                <span><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</span>
+                <span><i class="fa-solid fa-language"></i> Multilingual (English / Swahili / French)</span>
+            </div>
+
+            <div class="cta-group">
+                <button class="btn btn-primary" onclick="openContactModal()">
+                    <i class="fa-solid fa-envelope"></i> Contact Directly
+                </button>
+                <a href="https://www.linkedin.com/in/ishimweherve4/" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+                </a>
             </div>
         </div>
     </section>
@@ -557,9 +682,8 @@
         </div>
     </div>
 
-    <!-- Main Content Area -->
     <main>
-        <!-- Tab 1: Overview -->
+        <!-- TAB 1: OVERVIEW -->
         <div id="overview" class="tab-panel active">
             <div class="stat-grid">
                 <div class="stat-card">
@@ -575,8 +699,8 @@
                     <div class="stat-label">Regulatory Compliance</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">Multilingual</div>
-                    <div class="stat-label">English, Swahili & French Proficiency</div>
+                    <div class="stat-number">Bilingual</div>
+                    <div class="stat-label">English & French Proficiency</div>
                 </div>
             </div>
 
@@ -604,9 +728,58 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Featured Highlights Photos for Overview (2 Cards) -->
+            <div class="gallery-section-header">
+                <h3><i class="fa-solid fa-star"></i> Featured Operational Highlights</h3>
+            </div>
+
+            <div class="scroll-reveal-grid">
+                <!-- Gallery Card 1 -->
+                <div class="reveal-card" onclick="zoomImage('gallery1.jpg', 'Boeing DC-9 Exhaust Section Inspection')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery1.jpg" alt="Boeing 787-8 Maintenance">
+                        <div class="card-overlay">
+                            <span class="card-tag">Featured Overview</span>
+                            <div class="card-caption">
+                                <span>Boeing DC-9 Exhaust Section Inspection</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 2 -->
+                <div class="reveal-card" onclick="zoomImage('gallery2.jpg', 'Intergrannular corrosion Treatment Process')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery2.jpg" alt="Engine Inspection">
+                        <div class="card-overlay">
+                            <span class="card-tag">Featured Overview</span>
+                            <div class="card-caption">
+                                <span>Intergrannular corrosion Treatment Process</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Card 3 -->
+                <div class="reveal-card" onclick="zoomImage('gallery16.jpg', 'CFM56-7B Engine Installation')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery16.jpg" alt="Engine Installation">
+                        <div class="card-overlay">
+                            <span class="card-tag">Featured Overview</span>
+                            <div class="card-caption">
+                                <span>Boeing 737-800 Engine Installation</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Tab 2: Fleet Experience -->
+        <!-- TAB 2: FLEET EXPERIENCE -->
         <div id="fleet" class="tab-panel">
             <div class="grid-3">
                 <div class="card">
@@ -615,9 +788,10 @@
                         <span class="tag-pill">Widebody</span>
                     </div>
                     <ul class="card-list">
-                        <li>Composite & alloy airframe structural inspection routines.</li>
-                        <li>Hydraulics and high-pressure system leak checks during heavy servicing.</li>
-                        <li>Cabin environment & pressurization sensor verification.</li>
+                        <li>GEnx Engine removal and installation.</li>
+                        <li>Ottoman assembly repair.</li>
+                        <li>OFAR and OFCR module removal and installation.</li>
+                        <li>Removal & Installation of Galley ovens,boilers & coolers.</li>
                     </ul>
                 </div>
 
@@ -627,9 +801,9 @@
                         <span class="tag-pill">Narrowbody</span>
                     </div>
                     <ul class="card-list">
-                        <li>Flight control rigging, torque link ground safety pins, and actuator checks.</li>
-                        <li>Solid shank rivet replacements and localized corrosion treatment.</li>
-                        <li>Air cycle machine (ACM) performance testing and filter replacements.</li>
+                        <li>CFM56-7B Engine build up.</li>
+                        <li>Langing gear wheel and brake Removal and Installation.</li>
+                        <li>EMDP Pump troubleshooting and replacement.</li>
                     </ul>
                 </div>
 
@@ -639,8 +813,8 @@
                         <span class="tag-pill">Regional Jet</span>
                     </div>
                     <ul class="card-list">
-                        <li>Line & base servicing routines, hydraulic system servicing, and component R&I.</li>
-                        <li>Avionics sensor checks and flight control surface inspections.</li>
+                        <li>Line & base servicing checks, hydraulic system servicing, and component R&I.</li>
+                        <li>Lubrication of flight control & Langing gear actuators.</li>
                         <li>Pre-flight & post-flight structural inspections and defect rectifications.</li>
                     </ul>
                 </div>
@@ -653,7 +827,7 @@
                     <ul class="card-list">
                         <li>Airframe structural checks, fastener replacements, and panel fittings.</li>
                         <li>Powerplant inspection assistance and GE CF34 engine servicing tasks.</li>
-                        <li>Landing gear assembly pins, torque link alignment, and brake system checks.</li>
+                        <li>Battery replacement and APU service tasks.</li>
                     </ul>
                 </div>
 
@@ -663,15 +837,108 @@
                         <span class="tag-pill">Classic Airframe</span>
                     </div>
                     <ul class="card-list">
-                        <li>Legacy structural inspections and mechanical actuator maintenance.</li>
-                        <li>Primary flight control cable tension adjustments and lubrication routines.</li>
+                        <li>Participated in a C-check.</li>
+                        <li>Control cable cleaning & inspection.</li>
                         <li>Component Removal & Installation (R&I) during base maintenance.</li>
+                        <li>Lavatory unit removal, inspection, repair and installation.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Fleet Experience Photos (gallery1, gallery3, gallery4) -->
+            <div class="gallery-section-header">
+                <h3><i class="fa-solid fa-plane-up"></i> Fleet & Aircraft Servicing Visuals</h3>
+            </div>
+
+            <div class="scroll-reveal-grid">
+                <!-- Fleet Card 1 -->
+                <div class="reveal-card" onclick="zoomImage('gallery8.jpg', '787-8 A Check completed')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery8.jpg" alt="Boeing 787-8 Airframe">
+                        <div class="card-overlay">
+                            <span class="card-tag">Widebody Fleet</span>
+                            <div class="card-caption">
+                                <span>787-8 A-Check Completed</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 2 -->
+                <div class="reveal-card" onclick="zoomImage('gallery19.jpg', '787-8 Wing Inspection')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery19.jpg" alt="Flight Control Surfaces">
+                        <div class="card-overlay">
+                            <span class="card-tag">Control Surfaces</span>
+                            <div class="card-caption">
+                                <span>787-8 Wing Inspection</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 3 -->
+                <div class="reveal-card" onclick="zoomImage('gallery4.jpg', 'Boeing787-8 Engine Dry Motoring')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery4.jpg" alt="Powerplant Installation">
+                        <div class="card-overlay">
+                            <span class="card-tag">Landing Gear</span>
+                            <div class="card-caption">
+                                <span>Boeing787-8 Engine Dry Motoring</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Fleet Card 4 -->
+                <div class="reveal-card" onclick="zoomImage('gallery21.jpg', 'Boeing 737-800 A Check completed')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery21.jpg" alt="Boeing 737-800 Airframe">
+                        <div class="card-overlay">
+                            <span class="card-tag">Narrowbody Fleet</span>
+                            <div class="card-caption">
+                                <span>Boeing 737-800</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 5 -->
+                <div class="reveal-card" onclick="zoomImage('gallery22.jpg', 'McDonnell Douglas DC-9')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery22.jpg" alt="DC-9 Airframe">
+                        <div class="card-overlay">
+                            <span class="card-tag">Narrowbody Fleet</span>
+                            <div class="card-caption">
+                                <span>McDonnell Douglas DC-9</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 6 -->
+                <div class="reveal-card" onclick="zoomImage('gallery24.jpg', 'Embraer 190')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery24.jpg" alt="E190 Airframe">
+                        <div class="card-overlay">
+                            <span class="card-tag">Narrowbody Fleet</span>
+                            <div class="card-caption">
+                                <span>E190 Long Term Parking</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Tab 3: Technical Competencies -->
+
+        <!-- TAB 3: TECHNICAL COMPETENCIES -->
         <div id="skills" class="tab-panel">
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterSkills('all', this)">All Skills</button>
@@ -686,9 +953,9 @@
                         <h3 class="card-title"><i class="fa-solid fa-hammer"></i> Airframe & Structures</h3>
                     </div>
                     <ul class="card-list">
-                        <li>Solid Shank Rivet installation & sheet metal repairs.</li>
+                        <li>General Visual and Detailed inspections as well as functional and operational checks.</li>
                         <li>Corrosion inspection, treatment, and protective coating application.</li>
-                        <li>Landing gear assembly pins, torque link alignment, and brake checks.</li>
+                        <li>Landing gear wheels and brakes removal and installation.</li>
                     </ul>
                 </div>
 
@@ -697,9 +964,11 @@
                         <h3 class="card-title"><i class="fa-solid fa-fan"></i> Powerplant & Environmental</h3>
                     </div>
                     <ul class="card-list">
+                        <li>CFM56-7B Engine build up & Borescope inspection.</li>
+                        <li>Boeing 737-800/787-8 Engine removaL & installation.</li>
                         <li>Turbofan compressor washes utilizing demineralized water.</li>
-                        <li>Kidde continuous-loop thermal fire detection system testing.</li>
-                        <li>Air Cycle Cooling Machines (ACM) & cabin pressurization control loops.</li>
+                        <li>T-95 Fire protection thermocouple installation.</li>
+                        <li>Air Cycle Machines (ACM) turbine replacement.</li>
                     </ul>
                 </div>
 
@@ -708,15 +977,78 @@
                         <h3 class="card-title"><i class="fa-solid fa-microchip"></i> Electrical & Wiring</h3>
                     </div>
                     <ul class="card-list">
-                        <li>Ethernet cable crimping standards (T568A / T568B pinouts).</li>
+                        <li>Pitot static system leak check.</li>
                         <li>Removal and installation of galley equipment (Boilers, Ovens, Coolers).</li>
-                        <li>Terminal configurations and electrical continuity testing.</li>
+                        <li>Electrical continuity testing.</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Hands-On Technical Work Photos (gallery2, gallery5, gallery6, gallery7) -->
+            <div class="gallery-section-header">
+                <h3><i class="fa-solid fa-gears"></i> Hands-On Technical Execution</h3>
+            </div>
+
+            <div class="scroll-reveal-grid">
+                <!-- Hands-On Card 1 -->
+                <div class="reveal-card" onclick="zoomImage('gallery15.jpg', 'CFM56-7B THERMOCOUPLE INSTALLATION')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery15.jpg" alt="POWERPLANT">
+                        <div class="card-overlay">
+                            <span class="card-tag">POWERPLANT</span>
+                            <div class="card-caption">
+                                <span>CFM56-7B THERMOCOUPLE INSTALLATION</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 2 -->
+                <div class="reveal-card" onclick="zoomImage('gallery3.jpeg', 'Leading Edge Corrosion Removal')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery3.jpeg" alt="Leading Edge Corrosion Removal">
+                        <div class="card-overlay">
+                            <span class="card-tag">CORROSION TREATMENT</span>
+                            <div class="card-caption">
+                                <span>Leading Edge Corrosion Removal</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 3 -->
+                <div class="reveal-card" onclick="zoomImage('gallery26.jpg', 'Purging of fuel tank fumes before entry')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery26.jpg" alt="B787-8 Fuel Tank Purging">
+                        <div class="card-overlay">
+                            <span class="card-tag">Fuel Tank Safety</span>
+                            <div class="card-caption">
+                                <span>B787-8 Fuel Tank Purging</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hands-On Card 4 -->
+                <div class="reveal-card" onclick="zoomImage('gallery12.jpg', 'Wirelocking components during engine build-up')">
+                    <div class="card-img-wrapper">
+                        <img src="gallery12.jpg" alt="Turbofan Engine">
+                        <div class="card-overlay">
+                            <span class="card-tag">Powerplant Servicing</span>
+                            <div class="card-caption">
+                                <span>Wirelocking</span>
+                                <i class="fa-solid fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Tab 4: Education & Qualifications -->
+        <!-- TAB 4: EDUCATION & CERTIFICATIONS -->
         <div id="qualifications" class="tab-panel">
             <div class="grid-2">
                 <div class="card">
@@ -746,10 +1078,11 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 All rights reserved.</p>
-    </footer>
+    <!-- Full Screen Lightbox Modal -->
+    <div class="lightbox-backdrop" id="lightbox" onclick="closeZoom()">
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed view">
+        <div class="lightbox-caption" id="lightboxCap"></div>
+    </div>
 
     <!-- Contact Modal -->
     <div class="modal-backdrop" id="contactModal">
@@ -774,8 +1107,47 @@
         </div>
     </div>
 
-    <!-- Interactive JavaScript -->
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 All rights reserved.</p>
+    </footer>
+
     <script>
+        // IntersectionObserver for Scroll-Revealed Cards across all tabs
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        };
+
+        let revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function initScrollReveal() {
+            // Find all reveal-cards within the currently active panel
+            const activePanel = document.querySelector('.tab-panel.active');
+            if (activePanel) {
+                const cards = activePanel.querySelectorAll('.reveal-card');
+                cards.forEach((card, idx) => {
+                    // Reset card state if re-navigating
+                    card.classList.remove('is-visible');
+                    setTimeout(() => {
+                        revealObserver.observe(card);
+                    }, idx * 100);
+                });
+            }
+        }
+
+        // Initialize Observer on DOM Load
+        document.addEventListener('DOMContentLoaded', initScrollReveal);
+
+        // Theme Switcher Logic
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeIcon = document.getElementById('themeIcon');
         const themeLabel = document.getElementById('themeLabel');
@@ -795,6 +1167,7 @@
             }
         });
 
+        // Tab Switching & Re-triggering Scroll Reveal
         function switchTab(event, tabId) {
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabPanels = document.querySelectorAll('.tab-panel');
@@ -804,8 +1177,12 @@
 
             event.currentTarget.classList.add('active');
             document.getElementById(tabId).classList.add('active');
+
+            // Re-trigger reveal animation for cards in the newly opened tab
+            setTimeout(initScrollReveal, 60);
         }
 
+        // Skill Filter
         function filterSkills(category, btn) {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const skillCards = document.querySelectorAll('.skill-card');
@@ -822,6 +1199,18 @@
             });
         }
 
+        // Lightbox Zoom Modal Logic
+        function zoomImage(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCap').textContent = caption;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeZoom() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Contact Modal Logic
         function openContactModal() {
             document.getElementById('contactModal').classList.add('active');
         }
@@ -844,9 +1233,7 @@
                 const response = await fetch(form.action, {
                     method: form.method,
                     body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
@@ -854,12 +1241,7 @@
                     form.reset();
                     closeContactModal();
                 } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        alert('Oops! There was a problem submitting your form.');
-                    }
+                    alert('Oops! There was a problem submitting your form.');
                 }
             } catch (error) {
                 alert('Network error. Please check your internet connection and try again.');
